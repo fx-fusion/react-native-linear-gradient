@@ -85,7 +85,8 @@ export default class LinearGradient extends Component<Props> {
       <View ref={this.gradientRef} {...otherProps} style={style}>
         <NativeLinearGradient
           style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0}}
-          colors={colors.map(processColor)}
+          // colors={colors.map(processColor)}
+          colors={colors}
           startPoint={convertPoint('start', start)}
           endPoint={convertPoint('end', end)}
           locations={locations ? locations.slice(0, colors.length) : null}
