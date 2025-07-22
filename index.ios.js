@@ -3,7 +3,7 @@
  * @flow
  */
 import React, { Component, createRef } from 'react';
-import { processColor } from 'react-native';
+import { processColor, StyleSheet } from 'react-native';
 
 import NativeLinearGradient, { type Props } from './src';
 
@@ -44,15 +44,18 @@ export default class LinearGradient extends Component<Props> {
       useAngle,
       angleCenter,
       angle,
+      style,
       ...otherProps
     } = this.props;
     if ((colors && locations) && (colors.length !== locations.length)) {
       console.warn('LinearGradient colors and locations props should be arrays of the same length');
     }
 
+    console.log('[otherProps]', otherProps);
     return (
       <NativeLinearGradient
         ref={this.gradientRef}
+        style={StyleSheet.flatten([{ overflow: 'hidden' }, style])}
         {...otherProps}
         startPoint={convertPoint('start', start)}
         endPoint={convertPoint('end', end)}
